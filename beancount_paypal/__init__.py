@@ -1,16 +1,12 @@
 from beancount.core.number import D
 from beancount.ingest import importer
-from beancount.core import account
 from beancount.core import amount
 from beancount.core import flags
 from beancount.core import data
 
-from dateutil.parser import parse
-from datetime import datetime, timedelta
 from contextlib import contextmanager
 
 import csv
-import os
 
 from . import lang
 
@@ -43,7 +39,7 @@ class PaypalImporter(importer.ImporterProtocol):
         self.language = language
         self.metadata_map = metadata_map
 
-    def file_account(self, _):
+    def file_account(self, file):
         return self.account
 
     def identify(self, filename):
